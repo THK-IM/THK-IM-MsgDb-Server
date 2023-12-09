@@ -23,6 +23,7 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 		message := &dto.Message{}
 		err := json.Unmarshal([]byte(msgJsonStr), message)
 		if err != nil {
+			appCtx.Logger().Error(err)
 			return errorx.ErrMessageFormat
 		}
 		receivers := make([]int64, 0)
@@ -50,6 +51,7 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 			}
 			err = appCtx.UserMessageModel().InsertUserMessage(userMessage)
 			if err != nil {
+				appCtx.Logger().Error(err)
 				return errorx.ErrMessageFormat
 			}
 			// 处理原始消息
@@ -76,6 +78,7 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 		}
 		return nil
 	} else {
+		appCtx.Logger().Error("okReceiver, okMsg:", okReceiver, okMsg)
 		return errorx.ErrMessageFormat
 	}
 }
