@@ -2,11 +2,11 @@ package handler
 
 import (
 	"encoding/json"
-	"github.com/thk-im/thk-im-base-server/dto"
 	"github.com/thk-im/thk-im-base-server/event"
-	"github.com/thk-im/thk-im-base-server/model"
-	"github.com/thk-im/thk-im-msg-db-server/pkg/app"
-	"github.com/thk-im/thk-im-msg-db-server/pkg/errorx"
+	"github.com/thk-im/thk-im-msgapi-server/pkg/dto"
+	"github.com/thk-im/thk-im-msgapi-server/pkg/model"
+	"github.com/thk-im/thk-im-msgdb-server/pkg/app"
+	"github.com/thk-im/thk-im-msgdb-server/pkg/errorx"
 )
 
 func RegisterMsgDbHandlers(appCtx *app.Context) {
