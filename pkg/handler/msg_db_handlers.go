@@ -2,11 +2,11 @@ package handler
 
 import (
 	"encoding/json"
+	"github.com/thk-im/thk-im-base-server/errorx"
 	"github.com/thk-im/thk-im-base-server/event"
 	"github.com/thk-im/thk-im-msgapi-server/pkg/dto"
 	"github.com/thk-im/thk-im-msgapi-server/pkg/model"
 	"github.com/thk-im/thk-im-msgdb-server/pkg/app"
-	"github.com/thk-im/thk-im-msgdb-server/pkg/errorx"
 )
 
 func RegisterMsgDbHandlers(appCtx *app.Context) {
@@ -23,8 +23,8 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 		message := &dto.Message{}
 		err := json.Unmarshal([]byte(msgJsonStr), message)
 		if err != nil {
-			appCtx.Logger().Error(err)
-			return errorx.ErrMessageFormat
+			appCtx.Logger().Errorf("onMqSaveMsgEventReceived %s %v", msgJsonStr, err)
+			return errorx.ErrParamsError
 		}
 		receivers := make([]int64, 0)
 		err = json.Unmarshal([]byte(receiversStr), &receivers)
@@ -51,8 +51,8 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 			}
 			err = appCtx.UserMessageModel().InsertUserMessage(userMessage)
 			if err != nil {
-				appCtx.Logger().Error(err)
-				return errorx.ErrMessageFormat
+				appCtx.Logger().Errorf("onMqSaveMsgEventReceived %v %v", userMessage, err)
+				return errorx.ErrParamsError
 			}
 			// 处理原始消息
 			if userMessage.ReplyMsgId != nil {
@@ -78,7 +78,7 @@ func onMqSaveMsgEventReceived(m map[string]interface{}, appCtx *app.Context) err
 		}
 		return nil
 	} else {
-		appCtx.Logger().Error("okReceiver, okMsg:", okReceiver, okMsg)
-		return errorx.ErrMessageFormat
+		appCtx.Logger().Errorf("onMqSaveMsgEventReceived %v ", m)
+		return errorx.ErrParamsError
 	}
 }
