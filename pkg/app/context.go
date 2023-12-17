@@ -18,7 +18,6 @@ func (c *Context) UserMessageModel() model.UserMessageModel {
 func (c *Context) Init(config *conf.Config) {
 	c.Context = &server.Context{}
 	c.Context.Init(config)
-	c.Context.SdkMap = loader.LoadSdks(c.Config().Sdks, c.Logger())
 	c.Context.ModelMap = loader.LoadModels(c.Config().Models, c.Database(), c.Logger(), c.SnowflakeNode())
 
 }
