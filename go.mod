@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/sirupsen/logrus v1.9.3
-	github.com/thk-im/thk-im-base-server v0.0.0-20231222073937-b54764ff6725
-	github.com/thk-im/thk-im-msgapi-server v0.0.0-20231222075115-ddca3b47a8a7
+	github.com/thk-im/thk-im-base-server v0.0.0-20231222095716-b1a610143ed8
+	github.com/thk-im/thk-im-msgapi-server v0.0.0-20231223064343-7c3dbb0280be
 	gorm.io/gorm v1.25.5
 )
 
