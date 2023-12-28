@@ -4,8 +4,8 @@ go 1.19
 
 require (
 	github.com/sirupsen/logrus v1.9.3
-	github.com/thk-im/thk-im-base-server v0.0.0-20231222095716-b1a610143ed8
-	github.com/thk-im/thk-im-msgapi-server v0.0.0-20231223064343-7c3dbb0280be
+	github.com/thk-im/thk-im-base-server v0.0.0-20231228134043-304d36641379
+	github.com/thk-im/thk-im-msgapi-server v0.0.0-20231228134319-4ffaee919639
 	gorm.io/gorm v1.25.5
 )
 
@@ -24,6 +24,7 @@ require (
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
+	github.com/go-resty/resty/v2 v2.10.0 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/golang/protobuf v1.5.0 // indirect
